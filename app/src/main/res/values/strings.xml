@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TrabalhoFinal</string>
+    <string name="pdLogin">Login:</string>
+    <string name="pdlSenha">Senha: </string>
+    <string name="btnLogin">Acessar </string>
+    <string name="cinema">CINEMA</string>
+</resources>
