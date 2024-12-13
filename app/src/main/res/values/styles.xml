@@ -1,0 +1,11 @@
+<resources>
+    <style name="CustomMenuTextAppearance" parent="TextAppearance.AppCompat.Widget.ActionBar.Menu">
+        <item name="android:textColor">#FFFFFF</item> <!-- Cor do texto branca -->
+    </style>
+
+    <style name="CustomToolbarStyle" parent="Widget.MaterialComponents.Toolbar">
+        <item name="titleTextColor">#FFFFFF</item> <!-- Cor do título na Toolbar -->
+        <item name="subtitleTextColor">#FFFFFF</item> <!-- Cor do subtítulo na Toolbar -->
+        <item name="android:popupTheme">@style/ThemeOverlay.AppCompat.Dark</item>
+    </style>
+</resources>

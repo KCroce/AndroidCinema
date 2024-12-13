@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
 import com.example.androidfinal.R;
+import com.example.androidfinal.login.dashboard.ui.MainActivity;
 
 public class Login extends AppCompatActivity {
 
@@ -19,6 +20,7 @@ public class Login extends AppCompatActivity {
     private Button btnLogin;
     private Switch switchNightMode;
     private long lastBackPressedTime = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +51,6 @@ public class Login extends AppCompatActivity {
             }
         });
 
-
         // Configurar o evento de clique no botão de login
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,7 +60,8 @@ public class Login extends AppCompatActivity {
 
                 if (login(username, password)) {
                     Toast.makeText(Login.this, "Login bem-sucedido!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(Login.this, TelaTeste.class);
+                    Intent intent = new Intent(Login.this, MainActivity.class);
+
                     startActivity(intent);
                     finish();
                 }
@@ -68,6 +70,8 @@ public class Login extends AppCompatActivity {
                 }
             }
         });
+
+    }
 
         switchNightMode.setOnCheckedChangeListener((buttonView, isChecked) -> {
             // Armazenar a preferência do modo noturno no SharedPreferences
@@ -105,6 +109,7 @@ public class Login extends AppCompatActivity {
             editor.putString("password", "senha");
             editor.apply();
         }
+
     }
 
     @Override
@@ -129,5 +134,6 @@ public class Login extends AppCompatActivity {
         } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
+
     }
 }

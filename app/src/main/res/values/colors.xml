@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <!-- default -->
     <color name="tantofaz">#FF000000</color>
 
-
     <!-- Elementos Compartilhados -->
-
-
 
     <!--notdarkmode-->
     <color name="background_start_day">#9C013B85</color>

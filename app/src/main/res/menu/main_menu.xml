@@ -1,24 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
 
     <item
         android:id="@+id/action_search"
         android:title="Buscar"
-        android:icon="@android:drawable/ic_menu_search"
+        android:icon="@drawable/ic_search_elegant"
         app:actionViewClass="android.widget.SearchView"
         app:showAsAction="ifRoom|collapseActionView" />
 
     <item
         android:id="@+id/action_favorites"
         android:title="Favoritos"
-        android:icon="@android:drawable/star_on"
-        app:showAsAction="ifRoom" />
-
-    <item
-        android:id="@+id/action_rating"
-        android:title="Minhas Avaliações"
-        android:icon="@android:drawable/btn_star_big_on"
+        android:icon="@drawable/ic_favorite_filled"
         app:showAsAction="ifRoom" />
 
 </menu>
