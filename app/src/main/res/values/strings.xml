@@ -4,4 +4,5 @@
     <string name="pdlSenha">Senha: </string>
     <string name="btnLogin">Acessar </string>
     <string name="cinema">CINEMA</string>
+    <string name="switchLogin">Modo Noturno</string>
 </resources>
