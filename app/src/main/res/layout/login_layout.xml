@@ -1,50 +1,92 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:gravity="center" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/background_login">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:id="@+id/tela"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_login"
+    android:clickable="true"
+    android:focusable="true">
+
+   <!-- android:background="?attr/backgroundColor" -->
+
+<ImageView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/cinema"
         android:textSize="30sp"
-        android:textColor="#000000"/>
+        android:textColor="?attr/colorPrimary"
+        android:padding="10dp"
+        android:layout_marginBottom="0dp"/>
+
     <TableLayout
+        android:padding="20dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <TableRow>
+        android:layout_height="wrap_content"
+        >
+        <TableRow
+            android:layout_marginBottom="15dp">
             <TextView
+                android:textColor="?attr/colorPrimary"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="@string/pdLogin"
                 android:gravity="center"
-                android:textColor="#000000"
                 android:textSize="20dp"/>
+
             <EditText
                 android:id="@+id/Login"
                 android:layout_height="wrap_content"
                 android:layout_width="200dp"
-                android:hint="Usuario"/>
+                android:hint="Login"
+                android:gravity="center"/>
         </TableRow>
+
         <TableRow>
             <TextView
+                android:textColor="?attr/colorPrimary"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="@string/pdlSenha"
                 android:gravity="center"
-                android:textColor="#000000"
                 android:textSize="20sp"/>
             <EditText
                 android:id="@+id/Senha"
                 android:layout_height="wrap_content"
                 android:layout_width="200dp"
                 android:inputType="textPassword"
-                android:hint="Coloque sua senha"/>
+                android:hint="Password"
+                android:gravity="center"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/switchLogin"
+                android:textSize="20dp"
+                android:textColor="?attr/colorOnSecondary"
+
+                />
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_marginTop="10dp"
+            android:id="@+id/switchNightMode"
+            android:layout_marginRight="150dp"
+        />
         </TableRow>
         <Button
             android:id="@+id/btnLogin"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:textColor="?attr/colorPrimary"
             android:text="@string/btnLogin"
             android:layout_marginTop="30dp"
-            android:textColor="#000000"
-            android:backgroundTint="#F8F8F8"
+            android:backgroundTint="?attr/colorSecondary"
             android:textSize="20sp"/>
     </TableLayout>
 </LinearLayout>

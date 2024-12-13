@@ -1,16 +1,25 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.AndroidFinal" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/black</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+
+        <!--cor dos textos principais-->
+        <item name="colorPrimary">@color/yellow_main</item>
+
+        <item name="colorOnSecondary">@color/escrita_clara_dark</item>
+
+        <!-- cor do botão "Acessar" -->
+        <item name="colorSecondary">@color/buttom_dark</item>
+
+
+        <!-- CorBackground -->
+        <item name="backgroundColor">@color/background_start_dark</item>
+        <item name="background">@color/background_end_dark</item>
+
+        <!-- Status bar color e coisas pre definidas-->
+        <item name="android:statusBarColor">?attr/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/tantofaz</item>
+        <item name="colorOnPrimary">@color/tantofaz</item>
+        <item name="colorSecondaryVariant">@color/tantofaz</item>
+
     </style>
 </resources>
