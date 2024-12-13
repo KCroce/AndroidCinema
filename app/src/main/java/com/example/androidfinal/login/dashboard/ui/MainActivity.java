@@ -27,6 +27,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import com.example.androidfinal.login.dashboard.utils.Debouncer;
+
 // Importações adicionais
 
 public class MainActivity extends AppCompatActivity {
@@ -41,15 +43,16 @@ public class MainActivity extends AppCompatActivity {
     private boolean isLoading = false;
     private boolean isLastPage = false;
 
-    private static final int TOTAL_PAGES = 100; // TMDB permite até 1000 páginas, mas limitamos por exemplo
+    private static final int TOTAL_PAGES = 10;
+
+    private Debouncer debouncer = new Debouncer(); // Instância do debouncer
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView = findViewById(R.id.recyclerViewMovies);
         adapter = new MovieAdapter(this, movieList);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
@@ -59,20 +62,20 @@ public class MainActivity extends AppCompatActivity {
 
         loadMovies(currentPage);
 
-        // Implementar paginação (opcional)
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener(){
+        // Implementar paginação
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
-            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy){
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                if(dy > 0){
+                if (dy > 0) {
                     int visibleItemCount = layoutManager.getChildCount();
                     int totalItemCount = layoutManager.getItemCount();
                     int pastVisibleItems = layoutManager.findFirstVisibleItemPosition();
 
-                    if(!isLoading && !isLastPage){
-                        if((visibleItemCount + pastVisibleItems) >= totalItemCount){
+                    if (!isLoading && !isLastPage) {
+                        if ((visibleItemCount + pastVisibleItems) >= totalItemCount) {
                             currentPage++;
-                            if(currentPage <= TOTAL_PAGES){
+                            if (currentPage <= TOTAL_PAGES) {
                                 loadMovies(currentPage);
                             } else {
                                 isLastPage = true;
@@ -84,13 +87,14 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void loadMovies(int page){
+    private void loadMovies(int page) {
         isLoading = true;
         Call<MovieResponse> call = apiService.getPopularMovies(BuildConfig.TMDB_API_KEY, page);
         call.enqueue(new Callback<MovieResponse>() {
             @Override
-            public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response){
-                if(response.isSuccessful() && response.body() != null){
+            public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    if (page == 1) movieList.clear(); // Limpa a lista para recarregar os filmes populares
                     movieList.addAll(response.body().getResults());
                     adapter.notifyDataSetChanged();
                 } else {
@@ -100,35 +104,66 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<MovieResponse> call, Throwable t){
+            public void onFailure(Call<MovieResponse> call, Throwable t) {
                 Toast.makeText(MainActivity.this, "Falha na conexão", Toast.LENGTH_SHORT).show();
                 isLoading = false;
             }
         });
     }
 
-    // Configurar a barra de busca e menu
+    private void searchMovies(String query) {
+        Call<MovieResponse> call = apiService.searchMovies(BuildConfig.TMDB_API_KEY, query, 1);
+        call.enqueue(new Callback<MovieResponse>() {
+            @Override
+            public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    movieList.clear();
+                    movieList.addAll(response.body().getResults());
+                    adapter.notifyDataSetChanged();
+                } else {
+                    Toast.makeText(MainActivity.this, "Nenhum resultado encontrado", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MovieResponse> call, Throwable t) {
+                Toast.makeText(MainActivity.this, "Falha na conexão", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu){
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         MenuItem searchItem = menu.findItem(R.id.action_search);
         MenuItem favoritesItem = menu.findItem(R.id.action_favorites);
-        MenuItem ratingItem = menu.findItem(R.id.action_rating);
 
         SearchView searchView = (SearchView) searchItem.getActionView();
         searchView.setQueryHint("Buscar filmes...");
 
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
+        // Listener para busca
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public boolean onQueryTextSubmit(String query){
-                searchMovies(query);
+            public boolean onQueryTextSubmit(String query) {
+                if (query.isEmpty()) {
+                    // Caso a pesquisa esteja vazia, carregue os filmes populares
+                    loadMovies(1);
+                } else {
+                    searchMovies(query);
+                }
                 return false;
             }
 
             @Override
-            public boolean onQueryTextChange(String newText){
-                // Implementar sugestões se desejar
+            public boolean onQueryTextChange(String newText) {
+                // Utilizando debounce para evitar múltiplas requisições
+                debouncer.debounce(() -> {
+                    if (newText.isEmpty()) {
+                        loadMovies(1); // Voltar aos filmes populares
+                    } else {
+                        searchMovies(newText); // Fazer busca com o texto
+                    }
+                }, 300); // Delay de 300ms
                 return false;
             }
         });
@@ -139,33 +174,6 @@ public class MainActivity extends AppCompatActivity {
             return true;
         });
 
-        ratingItem.setOnMenuItemClickListener(item -> {
-            // Abrir RatingActivity
-            startActivity(new Intent(MainActivity.this, RatingActivity.class));
-            return true;
-        });
-
         return true;
-    }
-
-    private void searchMovies(String query){
-        Call<MovieResponse> call = apiService.searchMovies(BuildConfig.TMDB_API_KEY, query, 1);
-        call.enqueue(new Callback<MovieResponse>(){
-            @Override
-            public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response){
-                if(response.isSuccessful() && response.body() != null){
-                    movieList.clear();
-                    movieList.addAll(response.body().getResults());
-                    adapter.notifyDataSetChanged();
-                } else {
-                    Toast.makeText(MainActivity.this, "Nenhum resultado encontrado", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<MovieResponse> call, Throwable t){
-                Toast.makeText(MainActivity.this, "Falha na conexão", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 }
