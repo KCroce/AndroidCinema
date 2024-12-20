@@ -3,7 +3,11 @@
 
     <!-- default -->
     <color name="tantofaz">#FF000000</color>
-
+    <color name="lightBlue">#67ADF2</color>
+    <color name="red">#EF0D0D</color>
+    <color name="white">#FFFFFF</color>
+    <color name="colorAccent">#EF0D0D</color>
+    <color name="colorGrey">#856C6C</color>
     <!-- Elementos Compartilhados -->
 
     <!--notdarkmode-->

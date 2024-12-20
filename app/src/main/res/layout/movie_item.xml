@@ -6,7 +6,7 @@
     android:layout_margin="8dp"
     app:cardElevation="8dp"
     app:cardCornerRadius="16dp"
-    app:strokeColor="@color/purple_500"
+    app:strokeColor="@color/yellow_main"
     app:strokeWidth="1dp">
 
     <LinearLayout
@@ -36,7 +36,7 @@
                 android:id="@+id/movieTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/yellow"
+                android:textColor="@color/white"
                 android:text="Título do Filme"
                 android:textSize="18sp"
                 android:textStyle="bold"

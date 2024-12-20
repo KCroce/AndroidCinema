@@ -4,20 +4,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black">
+    android:background="@color/tantofaz">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/black"
+        android:background="@color/tantofaz"
         app:elevation="0dp">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/collapsingToolbar"
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            app:contentScrim="@color/red"
+            app:contentScrim="@color/tantofaz"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
             app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Display1"
             app:collapsedTitleTextAppearance="@style/TextAppearance.AppCompat.Headline">
@@ -48,7 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                app:cardBackgroundColor="@color/black"
+                app:cardBackgroundColor="@color/tantofaz"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="8dp">
 
@@ -63,7 +63,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Título do Filme"
-                        android:textColor="@color/yellow"
+                        android:textColor="@color/yellow_main"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -98,7 +98,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                app:cardBackgroundColor="@color/black"
+                app:cardBackgroundColor="@color/tantofaz"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="8dp">
 
@@ -112,7 +112,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Sinopse"
-                        android:textColor="@color/yellow"
+                        android:textColor="@color/yellow_main"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:layout_marginBottom="8dp" />
@@ -131,7 +131,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                app:cardBackgroundColor="@color/black"
+                app:cardBackgroundColor="@color/tantofaz"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="8dp">
 
@@ -145,7 +145,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Sua Avaliação"
-                        android:textColor="@color/yellow"
+                        android:textColor="@color/yellow_main"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:layout_marginBottom="8dp" />
@@ -188,8 +188,8 @@
                     android:text="Classificar"
                     app:icon="@drawable/ic_star"
                     app:iconGravity="textStart"
-                    android:backgroundTint="@color/yellow"
-                    android:textColor="@color/black" />
+                    android:backgroundTint="@color/yellow_main"
+                    android:textColor="@color/tantofaz" />
             </LinearLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

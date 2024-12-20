@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    android:background="@color/backgroundColor">
+    android:background="@drawable/background_login">
     >
 
     <TextView
@@ -18,7 +18,7 @@
         android:textSize="24sp"
         android:textStyle="bold"
         android:layout_marginBottom="24dp"
-        android:shadowColor="@color/backgroundColor"
+        android:shadowColor="@drawable/background_login"
         android:shadowDx="5"
         android:shadowDy="6"
         android:shadowRadius="3"/>

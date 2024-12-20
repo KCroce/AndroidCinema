@@ -71,7 +71,7 @@ public class Login extends AppCompatActivity {
             }
         });
 
-    }
+
 
         switchNightMode.setOnCheckedChangeListener((buttonView, isChecked) -> {
             // Armazenar a preferência do modo noturno no SharedPreferences
