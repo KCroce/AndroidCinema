@@ -4,22 +4,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#121212">
+    android:background="@drawable/background_login">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
+        android:background="?attr/colorSurface"
         app:elevation="0dp">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@android:color/transparent"
-            app:title="Favoritos"
-            app:titleTextColor="#FFFFFF"
-            />
+            android:background="?attr/colorSurface"
+            app:title="Seus Favoritos"
+            app:titleTextColor="?attr/colorOnSurface"/>
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -30,8 +29,8 @@
         android:clipToPadding="false"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
-
-    <include layout="@layout/empty_state_favorites"
+    <include
+        layout="@layout/empty_state_favorites"
         android:id="@+id/emptyStateContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -4,20 +4,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/tantofaz">
+    android:background="@drawable/background_login">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/tantofaz"
+        android:background="?attr/colorSurface"
         app:elevation="0dp">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/collapsingToolbar"
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            app:contentScrim="@color/tantofaz"
+            app:contentScrim="?attr/colorSurface"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
             app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Display1"
             app:collapsedTitleTextAppearance="@style/TextAppearance.AppCompat.Headline">
@@ -43,12 +43,12 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Movie Details Card -->
+            <!-- Card de Detalhes do Filme -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                app:cardBackgroundColor="@color/tantofaz"
+                app:cardBackgroundColor="?attr/colorSurface"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="8dp">
 
@@ -63,7 +63,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Título do Filme"
-                        android:textColor="@color/yellow_main"
+                        android:textColor="?attr/colorOnSurface"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -72,7 +72,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Data de Lançamento: 2023"
-                        android:textColor="@color/lightBlue"
+                        android:textColor="?attr/colorOnSurface"
                         android:layout_marginTop="8dp" />
 
                     <TextView
@@ -80,7 +80,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Avaliação: 8.5"
-                        android:textColor="@color/red"
+                        android:textColor="?attr/colorOnSurface"
                         android:layout_marginTop="4dp" />
 
                     <TextView
@@ -88,17 +88,17 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Gêneros: Ação, Drama"
-                        android:textColor="@color/white"
+                        android:textColor="?attr/colorOnSurface"
                         android:layout_marginTop="4dp" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Synopsis Card -->
+            <!-- Card de Sinopse -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                app:cardBackgroundColor="@color/tantofaz"
+                app:cardBackgroundColor="?attr/colorSurface"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="8dp">
 
@@ -112,7 +112,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Sinopse"
-                        android:textColor="@color/yellow_main"
+                        android:textColor="?attr/colorOnSurface"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:layout_marginBottom="8dp" />
@@ -122,16 +122,16 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Sinopse detalhada do filme será exibida aqui."
-                        android:textColor="@color/white" />
+                        android:textColor="?attr/colorOnSurface" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- User Rating Card -->
+            <!-- Card da Avaliação do Usuário -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                app:cardBackgroundColor="@color/tantofaz"
+                app:cardBackgroundColor="?attr/colorSurface"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="8dp">
 
@@ -145,7 +145,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Sua Avaliação"
-                        android:textColor="@color/yellow_main"
+                        android:textColor="?attr/colorOnSurface"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:layout_marginBottom="8dp" />
@@ -155,12 +155,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Sua Avaliação: N/A"
-                        android:textColor="@color/white"
+                        android:textColor="?attr/colorOnSurface"
                         android:textSize="16sp" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Action Buttons -->
+            <!-- Botões de Ação -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -176,8 +176,8 @@
                     android:text="Favoritos"
                     app:icon="@drawable/ic_favorite_border"
                     app:iconGravity="textStart"
-                    android:backgroundTint="@color/red"
-                    android:textColor="@color/white" />
+                    android:backgroundTint="?attr/colorPrimary"
+                    android:textColor="?attr/colorOnPrimary" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnRate"
@@ -188,8 +188,8 @@
                     android:text="Classificar"
                     app:icon="@drawable/ic_star"
                     app:iconGravity="textStart"
-                    android:backgroundTint="@color/yellow_main"
-                    android:textColor="@color/tantofaz" />
+                    android:backgroundTint="?attr/colorSecondary"
+                    android:textColor="?attr/colorOnSecondary" />
             </LinearLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
